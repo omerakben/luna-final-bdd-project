@@ -1,4 +1,4 @@
-package com.softwaretestingboard.magento.test.hooks;
+package com.softwaretestingboard.magento.test.stepDefinitions;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -22,14 +22,14 @@ public class Hooks {
 
     // Load the configuration properties
     @Before(order = 0)
-    private void getPropertyValues() {
+    public void getPropertyValues() {
         configReader = new ConfigReader();
         properties = configReader.initializeProperties();
     }
 
     // Launch the browser and navigate to the URL
     @Before(order = 1)
-    private void launchBrowser() {
+    public void launchBrowser() {
         String browserName = configReader.getBrowserName();
         driverFactory = new DriverFactory();
         driver = driverFactory.initializeBrowser(browserName);
@@ -39,7 +39,7 @@ public class Hooks {
 
     // Close the browser and take a screenshot if the scenario fails
     @After
-    private void closeBrowser(Scenario scenario) {
+    public void closeBrowser(Scenario scenario) {
         String scenarioName = scenario.getName();
         if (scenario.isFailed()) {
             TakesScreenshot takesScreenshot = (TakesScreenshot) driver;

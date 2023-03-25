@@ -7,10 +7,9 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="src/test/resources/features",
-        glue={"stepDefinitions","hooks"},
+        glue={"com.softwaretestingboard.magento.stepdefinitions"},
         publish=true,
         monochrome = true,
-        tags = "@smoke",
         plugin = {"pretty", "html:target/cucumber-reports/cucumber-pretty"}
 )
 public class TestRunner {
