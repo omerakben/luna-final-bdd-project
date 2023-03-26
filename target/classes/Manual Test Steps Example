@@ -1,0 +1,100 @@
+MANUAL TEST CASES EXAMPLE
+BaseURL =  https://magento.softwaretestingboard.com/
+
+User Registration (Positive Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Create an Account” link in the upper-right corner of the homepage.
+c. Fill in the required details such as First Name, Last Name, Email Address, Password, and Confirm Password.
+d. Click on the “Create an Account” button.
+e. Verify that the user is successfully registered and redirected to the My Account page.
+
+User Registration (Negative Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Create an Account” link in the upper-right corner of the homepage.
+c. Enter an email address that is already registered with the website.
+d. Click on the “Create an Account” button.
+e. Verify that the user is not registered and an error message is displayed.
+
+User Registration (Negative Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Create an Account” link in the upper-right corner of the homepage.
+c. DON”T Fill in the required details such as (First Name, Last Name, Email Address)
+d. Click on the “Create an Account” button.
+e. Verify that the user is not registered and an error message is displayed.
+
+User Sign In (Positive Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Sign In” link in the upper-right corner of the homepage.
+c. Enter the registered email address and password.
+d. Click on the “Sign In” button.
+e. Verify that the user is successfully signed in and redirected to the homepage.
+
+User Sign In (Negative Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Sign In” link in the upper-right corner of the homepage.
+c. Enter an invalid email address and password.
+d. Click on the “Sign In” button.
+e. Verify that the user is not signed in and an error message is displayed.
+f. “The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.”
+
+User Sign Out (Positive Test Case)
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Click on the “Sign In” link in the upper-right corner of the homepage.
+c. Enter the registered email address and password.
+d. Click on the “Sign In” button.
+e. Click on the “Sign Out” link in the upper-right corner of the homepage.
+f. Verify that the user is successfully signed out and redirected to the homepage.
+g. “You are signed out”
+
+Placing Order
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Search for a product on the homepage or using the search functionality.
+c. Click on the product to view its details
+d. Add it to the cart with required fields(Size,Color,Qty).
+e. Proceed to checkout and enter the shipping and payment details.
+f.  Place the order and verify that the order is successfully placed and the user is redirected to the order confirmation page.
+g.  “Thank you for your purchase!”
+ → “Your order number is: XXXXXXX.
+
+Verify Order
+Test Steps:
+a. Launch the Magento website at BaseURL.
+b. Search for a product on the homepage or using the search functionality.
+c. Click on the product to view its details
+d. Add it to the cart with required fields(Size,Color,Qty).
+e. Proceed to checkout and enter the shipping and payment details.
+f.  Place the order and verify that the order is successfully placed and the user is redirected to the order confirmation page.
+g.  “Thank you for your purchase!”
+ → “Your order number is: XXXXXXX.
+h. Verify the order on the My Orders page
+j. Click View Order
+k. Verify with Order #
+l. Click Print Order to verify the newly opened page.
+
+Search Product
+Test Steps:
+
+Contact Us
+Test Steps:
+
+Subscription
+Test Steps:
+
+Add to Wishlist
+Test Steps:
+
+Add to Compare
+Test Steps:
+
+Advanced Search Functionality
+Test Steps:
+
+Verify Static Pages
+Test Steps:
