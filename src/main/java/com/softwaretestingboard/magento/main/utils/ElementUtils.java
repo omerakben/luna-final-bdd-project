@@ -84,7 +84,7 @@ public class ElementUtils {
     }
 
     // Wait for an element to be visible and return the element
-    public WebElement waitForVisibilityOfElement(WebElement element, long durationInSeconds) {
+    public  WebElement waitForVisibilityOfElement(WebElement element, long durationInSeconds) {
         WebElement webElement = null;
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));

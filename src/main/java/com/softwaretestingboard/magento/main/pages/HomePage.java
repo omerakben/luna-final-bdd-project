@@ -18,6 +18,7 @@ public class HomePage {
     }
 
     public void navigateToRegistrationPage() {
+
         createAccountLink.click();
     }
 }
