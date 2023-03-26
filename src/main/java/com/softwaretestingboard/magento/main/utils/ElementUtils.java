@@ -1,5 +1,6 @@
 package com.softwaretestingboard.magento.main.utils;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -75,6 +76,13 @@ public class ElementUtils {
         }
         return alert;
     }
+    
+ // Mouse hover over an element 
+    public void mouseHover(WebElement element, long durationInSeconds) {
+        WebElement webElement = waitForVisibilityOfElement(element, durationInSeconds);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(webElement).build().perform();
+    }
 
     // Mouse hover over an element and click it after waiting for it to be visible
     public void mouseHoverAndClick(WebElement element, long durationInSeconds) {
@@ -93,6 +101,13 @@ public class ElementUtils {
             e.printStackTrace();
         }
         return webElement;
+    }
+    
+ // Wait for an element to be invisible
+    public void waitForInvisibilityOfElement(WebElement element, long durationInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
+        element.click();
+        wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
     // Click on an element using JavaScript after waiting for it to be visible
@@ -124,4 +139,21 @@ public class ElementUtils {
             return false;
         }
     }
+    /**
+	 * Return integer number from low(included) to (high)included
+	 * @low is included
+	 * @high is included
+	 * @return integer number
+	 */
+    public static int randomIntBeetween(int low,int high) {
+		return (int)((Math.random()*high)+low);
+	}
+    
+    private static String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			  + "abcdefghijklmnopqrstuvwxyz"
+	          + "0123456789";
+
+	public static String generateMail() {
+		return (RandomStringUtils.random(10,characters)+"@gmail.com");
+	}
 }
