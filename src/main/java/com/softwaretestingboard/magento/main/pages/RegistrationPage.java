@@ -42,7 +42,7 @@ public class RegistrationPage {
     }
 
     public boolean isRegistrationSuccessful() {
-        return driver.getCurrentUrl().contains("customer/account");
+        return driver.getTitle().contains("My Account");
     }
 }
 

@@ -36,7 +36,9 @@ public class UserRegistrationSteps {
     public void the_user_fills_in_the_required_details_and_submits_the_form() {
         String fName = "Katia";
         String lName = "Barlas";
+
         String email = ElementUtils.generateMail();
+
         String password = "oscarAkben90!";
         String confirmPassword = "oscarAkben90!";
 
