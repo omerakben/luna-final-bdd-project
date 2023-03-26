@@ -11,6 +11,9 @@ public class HomePage {
 
     @FindBy(linkText = "Create an Account")
     WebElement createAccountLink;
+    
+    @FindBy(linkText = "Sign In")
+    WebElement signInAccountLink;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -19,5 +22,9 @@ public class HomePage {
 
     public void navigateToRegistrationPage() {
         createAccountLink.click();
+    }
+    
+    public void navigateToSignInPage() {
+    	signInAccountLink.click();
     }
 }
