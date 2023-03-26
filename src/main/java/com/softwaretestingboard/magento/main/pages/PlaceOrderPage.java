@@ -1,13 +1,15 @@
 package com.softwaretestingboard.magento.main.pages;
 
 
+
+import com.softwaretestingboard.magento.main.utils.ConfigReader;
 import com.softwaretestingboard.magento.main.utils.ElementUtils;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 
 import static com.softwaretestingboard.magento.main.utils.CommonUtils.*;
@@ -17,6 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 public class PlaceOrderPage {
     WebDriver driver;
+    ConfigReader configReader;
     ElementUtils elementUtils;
 
 
@@ -68,7 +71,16 @@ public WebElement phoneNumberInput;
 public List<WebElement> radioBtnByPrice;
 @FindBy(xpath = "//span[normalize-space()='Next']")
 public  WebElement nextBtn;
-
+@FindBy(xpath  ="//div[@class='ship-to']//div[@class='shipping-information-content']")
+public WebElement shippingInfo;
+@FindBy (xpath = "//div[@class='primary']/button[@type='submit']/span[.='Place Order']")
+public WebElement placeOrderBtn;
+@FindBy (xpath = "//span[.='Thank you for your purchase!']")
+public  WebElement thankYouMessage;
+@FindBy (xpath = "//div[@class='checkout-success']/p[contains(.,'Your order # is:')]")
+public WebElement orderNumberMessage;
+@FindBy (xpath = "//span[@data-bind='text: getEmailAddress()']")
+public WebElement emailText;
 
 
     public PlaceOrderPage(WebDriver driver) {
@@ -120,8 +132,13 @@ public  WebElement nextBtn;
     }
 
 
-    public void fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn() {
-       emailInput.sendKeys(randomEmail());
+    public void fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn () {
+        configReader = new ConfigReader();
+        String randomEmail = randomEmail();
+        configReader.setProperty("email", randomEmail);
+
+        emailInput.sendKeys(randomEmail);
+
        firstNameInput.sendKeys(randomFirstName());
        lastNameInput.sendKeys(randomLastName());
        streetAddressInput.sendKeys(randomStreetName());
@@ -137,23 +154,28 @@ public  WebElement nextBtn;
         radioBtnByPrice.get(randomIndex).click();
 
         nextBtn.click();
-
-
     }
 
-    public void verify_section_and_then_click_on_btn(String string, String string2) {
- // to be finished
+
+    public void verifyShipToSectionAndThenClickOnPlaceOrderBtn() throws InterruptedException {
+        assertTrue(shippingInfo.isDisplayed());
+        Thread.sleep(1_000);
+        placeOrderBtn.click();
     }
 
-    public void verify_message(String string) {
 
+    public void verifyThankYouForYourPurchaseMessage() {
+        assertTrue(thankYouMessage.isDisplayed());
     }
 
     public void verify_that_order_number_was_provided() {
+        assertTrue(orderNumberMessage.isDisplayed());
 
     }
 
-    public void verify_email_address_shows_as_registered() {
+    public void verify_email_address_shows_as_registered( ) {
+        Assert.assertEquals("emails do not match", emailText.getText().trim(),configReader.getProperty("email"));
+
 
     }
 

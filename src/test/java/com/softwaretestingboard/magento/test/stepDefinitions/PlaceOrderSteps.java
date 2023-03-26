@@ -51,20 +51,25 @@ public class PlaceOrderSteps {
     public void fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn() {
         placeOrderPage.fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn();
     }
-    @Then("Verify {string}  section and then click on {string} btn")
-    public void verify_section_and_then_click_on_btn(String string, String string2) {
+    @Then("Verify Ship to  section and then click on Place Order btn")
+    public void verifyShipToSectionAndThenClickOnPlaceOrderBtn() throws InterruptedException {
+        placeOrderPage.verifyShipToSectionAndThenClickOnPlaceOrderBtn();
 
     }
-    @Then("Verify {string} message")
-    public void verify_message(String string) {
-
+    @Then("Verify Thank you for your purchase! message")
+    public void verifyThankYouForYourPurchaseMessage() {
+        placeOrderPage.verifyThankYouForYourPurchaseMessage();
     }
+
+
     @Then("Verify that order number was provided")
     public void verify_that_order_number_was_provided() {
+        placeOrderPage.verify_that_order_number_was_provided();
 
     }
     @Then("Verify email address shows as registered")
     public void verify_email_address_shows_as_registered() {
+        placeOrderPage.verify_email_address_shows_as_registered();
 
     }
 

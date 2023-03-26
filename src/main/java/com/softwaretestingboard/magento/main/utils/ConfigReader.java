@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class    ConfigReader {
+public  class    ConfigReader {
 
     private Properties prop;
 
@@ -25,11 +25,22 @@ public class    ConfigReader {
 
     // Get the browser name from the configuration properties
     public String getBrowserName() {
+
         return prop.getProperty("browserName");
     }
 
     // Get the URL from the configuration properties
     public String getUrl() {
+
         return prop.getProperty("url");
     }
+    public void setProperty(String keyName, String value){
+        prop = new Properties();
+        this.prop.setProperty(keyName, value);
+    }
+    public  String getProperty(String keyName) {
+
+        return prop.getProperty(keyName);
+    }
+
 }
