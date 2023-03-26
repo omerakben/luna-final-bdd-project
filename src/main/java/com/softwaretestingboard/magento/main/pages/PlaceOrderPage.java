@@ -1,8 +1,7 @@
 package com.softwaretestingboard.magento.main.pages;
 
-import com.softwaretestingboard.magento.main.utils.CommonUtils;
+
 import com.softwaretestingboard.magento.main.utils.ElementUtils;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -143,7 +142,7 @@ public  WebElement nextBtn;
     }
 
     public void verify_section_and_then_click_on_btn(String string, String string2) {
-
+ // to be finished
     }
 
     public void verify_message(String string) {
