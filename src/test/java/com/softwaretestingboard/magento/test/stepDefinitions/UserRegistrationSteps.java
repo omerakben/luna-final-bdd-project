@@ -1,5 +1,6 @@
 package com.softwaretestingboard.magento.test.stepDefinitions;
 
+import com.softwaretestingboard.magento.main.pages.BasePage;
 import com.softwaretestingboard.magento.main.pages.HomePage;
 import com.softwaretestingboard.magento.main.pages.RegistrationPage;
 import com.softwaretestingboard.magento.main.utils.ElementUtils;
@@ -13,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 public class UserRegistrationSteps {
 
     private final WebDriver driver = DriverFactory.getDriver();
+    private BasePage basePage;
     private HomePage homePage;
     private RegistrationPage registrationPage;
 
@@ -28,7 +30,8 @@ public class UserRegistrationSteps {
             registrationPage = new RegistrationPage(driver);
         }
         if (linkText.equals("Sign In")) {
-            homePage.navigateToSignInPage();
+        	basePage = new BasePage(driver);
+            basePage.getSignInBtn().click();
         }
     }
 

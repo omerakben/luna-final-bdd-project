@@ -145,7 +145,7 @@ public class ElementUtils {
 	 * @high is included
 	 * @return integer number
 	 */
-    public static int randomIntBeetween(int low,int high) {
+    public int randomIntBeetween(int low,int high) {
 		return (int)((Math.random()*high)+low);
 	}
     
