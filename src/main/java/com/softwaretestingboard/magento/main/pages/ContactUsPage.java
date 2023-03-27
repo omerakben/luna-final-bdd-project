@@ -12,6 +12,7 @@ public class ContactUsPage {
         PageFactory.initElements(driver, this);
     }
 
+    //PageFactory
     @FindBy(xpath = "//input[@name='name']")
      private  WebElement nameContactUsInput;
     @FindBy(id = "email")
