@@ -18,7 +18,12 @@ public class ContactUsStepDef {
     @Given("User is on the Luma Home Page")
     public void user_is_on_the_luma_home_page() {
         homePage =new HomePage(driver);
-        homePage.isHomePageDisplayed();
+       boolean isOnHomePage = homePage.isHomePageDisplayed();
+        if (isOnHomePage) {
+            System.out.println("User is on the Luma Home Page.");
+        } else {
+            System.out.println("User is not on the Luma Home Page.");
+        }
     }
     @When("User click on the Contact Us link")
     public void user_click_on_the_contact_us_link() {
