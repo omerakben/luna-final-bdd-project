@@ -106,6 +106,7 @@ public class CommonUtils {
 
     //TODO: Check out how the created methods give results here.
     public static void main(String[] args) {
+
         System.out.println(generateRandomFirstName());
         System.out.println(generateRandomLastName());
         System.out.println(generateRandomStreetName());
