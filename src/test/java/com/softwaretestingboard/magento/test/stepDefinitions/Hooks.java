@@ -37,7 +37,7 @@ public class Hooks {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-//     Close the browser and take a screenshot if the scenario fails
+     //Close the browser and take a screenshot if the scenario fails
     @After
     public void closeBrowser(Scenario scenario) {
         String scenarioName = scenario.getName();

@@ -13,10 +13,3 @@ Feature: Place order functionality
     Then Verify Thank you for your purchase! message
     Then Verify that order number was provided
     Then Verify email address shows as registered
-
-
-
-
-
-
-

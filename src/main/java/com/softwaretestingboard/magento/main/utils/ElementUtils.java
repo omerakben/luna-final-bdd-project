@@ -76,8 +76,8 @@ public class ElementUtils {
         }
         return alert;
     }
-    
- // Mouse hover over an element 
+
+    // Mouse hover over an element
     public void mouseHover(WebElement element, long durationInSeconds) {
         WebElement webElement = waitForVisibilityOfElement(element, durationInSeconds);
         Actions actions = new Actions(driver);
@@ -92,7 +92,7 @@ public class ElementUtils {
     }
 
     // Wait for an element to be visible and return the element
-    public  WebElement waitForVisibilityOfElement(WebElement element, long durationInSeconds) {
+    public WebElement waitForVisibilityOfElement(WebElement element, long durationInSeconds) {
         WebElement webElement = null;
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
@@ -102,8 +102,8 @@ public class ElementUtils {
         }
         return webElement;
     }
-    
- // Wait for an element to be invisible
+
+    // Wait for an element to be invisible
     public void waitForInvisibilityOfElement(WebElement element, long durationInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
         element.click();
@@ -139,21 +139,23 @@ public class ElementUtils {
             return false;
         }
     }
-    /**
-	 * Return integer number from low(included) to (high)included
-	 * @low is included
-	 * @high is included
-	 * @return integer number
-	 */
-    public int randomIntBeetween(int low,int high) {
-		return (int)((Math.random()*high)+low);
-	}
-    
-    private static String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			  + "abcdefghijklmnopqrstuvwxyz"
-	          + "0123456789";
 
-	public static String generateMail() {
-		return (RandomStringUtils.random(10,characters)+"@gmail.com");
-	}
+    /**
+     * Return integer number from low(included) to (high)included
+     *
+     * @return integer number
+     * @low is included
+     * @high is included
+     */
+    public static int randomIntBetween(int low, int high) {
+        return (int) ((Math.random() * high) + low);
+    }
+
+    private static String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            + "abcdefghijklmnopqrstuvwxyz"
+            + "0123456789";
+
+    public static String generateMail() {
+        return (RandomStringUtils.random(10, characters) + "@gmail.com");
+    }
 }

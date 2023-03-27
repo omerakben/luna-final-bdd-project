@@ -2,113 +2,125 @@ package com.softwaretestingboard.magento.main.utils;
 
 import com.github.javafaker.Faker;
 
-import java.util.Locale;
+import java.util.Random;
+import java.util.function.Function;
 
 public class CommonUtils {
-    private CommonUtils(){}
-    public static String generateRandomstring(int length) {
-        String source = "abcdecdgjklmnoprstovwxyz";
-        String result = "";
-        for (int i = 0; i <= length; i++) {
-            int randomIndex = (int) (Math.random() * source.length() + 1);
-            result += (String.valueOf(source.charAt(randomIndex)));
 
-        }
-        return result;
-    }
+    private static final Faker FAKER = new Faker();
 
-
-    public static String generateRandomstring(int length, boolean isUpperCase) {
-        String source = "abcdecdgjklmnoprstovwxyz";
-        String result = "";
-        for (int i = 0; i <= length; i++) {
-            int randomIndex = (int) (Math.random() * source.length() + 1);
-            result += (String.valueOf(source.charAt(randomIndex)));
-
-        }
-        return isUpperCase ? result.toLowerCase() : result;
+    /**
+     * Generates a random string of letters, optionally converting them to uppercase.
+     *
+     * @param length      the length of the generated string
+     * @param isUpperCase whether to convert the string to uppercase
+     * @return the generated string
+     */
+    public static String generateRandomString(int length, boolean isUpperCase) {
+        String randomString = FAKER.lorem().characters().substring(0, length);
+        return isUpperCase ? randomString.toUpperCase() : randomString;
     }
 
     /**
-     * This method will create random numbers beetween min and max inclusive.
+     * Generates a random password that includes a special character and is 12 characters long.
      *
+     * @return the generated password
      */
-    public static int generalRandomNumber(int min, int max){
-
-        int random=(int)(Math.random()*((max-min)+1)+min);
-        return random;
-    }
-
-    public static String randomFirstName(){
-        Faker faker=new Faker();
-        String randonFirstName=faker.name().firstName();
-        return randonFirstName;
-    }
-
-    public static String randomLastName(){
-        Faker faker=new Faker();
-        String randonLastName=faker.name().lastName();
-        return randonLastName;
-    }
-
-    public static String randomStreetName(){
-        Faker faker=new Faker();
-        String randomStreetName= faker.address().streetName();
-        return randomStreetName;
-    }
-    public static String randomCountry(){
-        Faker faker=new Faker();
-        String randomCountry= faker.country().name();
-        return randomCountry;
-    }
-//    public static String randomZip() {
-//        Faker faker = new Faker();
-//        String randomZip = faker.address().zipCode().substring(0,6);
-//        return randomZip;
-//    }
-    public static String randomPhoneNumber(){
-        Faker faker = new Faker();
-
-        String phoneNumber = String.valueOf(faker.number().digits(10));
-        return phoneNumber;
-    }
-    public static String rndPhoneNumber(){
-        String rndPhoneNumber = "";
-        String valueph = "123456789";
-        for (int i = 0; i < 10; i++) {
-            rndPhoneNumber += String.valueOf(generalRandomNumber(1,9));
+    public static String generateRandomPassword() {
+        Random random = new Random();
+        String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String specialChars = "!@#$%^&*()_+-=[]{},.<>/?";
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < 9; i++) {
+            int randomIndex = random.nextInt(letters.length());
+            password.append(letters.charAt(randomIndex));
         }
-        return rndPhoneNumber;
+        int randomIndex = random.nextInt(specialChars.length());
+        password.append(specialChars.charAt(randomIndex));
+        return password.toString();
     }
 
-    public static String randomCity(){
-        Faker faker=new Faker();
-        String randomCity= faker.address().cityName();
-        return randomCity;
+    /**
+     * Generates a random integer between min and max (inclusive).
+     *
+     * @param min the minimum value (inclusive)
+     * @param max the maximum value (inclusive)
+     * @return the generated integer
+     */
+    public static int generateRandomNumber(int min, int max) {
+        return (int) (Math.random() * (max - min + 1) + min);
     }
 
-    public static String randomState(){
-        Faker faker=new Faker();
-        String randomState= faker.address().state();
-        return randomState;
-    }
-    public static String randomZip(){
-        Faker faker=new Faker(new Locale("en-us"));
-        String randomZip= faker.address().zipCode();
-        return randomZip;
+    public static String generateRandomFirstName() {
+        return withFaker(faker -> faker.name().firstName());
     }
 
-    public static String randomQuote(){
-        Faker faker=new Faker();
-        String randomQuote = faker.gameOfThrones().quote();
-        return randomQuote;
-
-    }
-    public static String randomEmail(){
-        Faker faker=new Faker();
-        String emailAddress = faker.internet().emailAddress();
-        return emailAddress;
-
+    public static String generateRandomLastName() {
+        return withFaker(faker -> faker.name().lastName());
     }
 
+    public static String generateRandomStreetName() {
+        return withFaker(faker -> faker.address().streetName());
+    }
+
+    public static String generateRandomCountry() {
+        return withFaker(faker -> faker.country().name());
+    }
+
+    public static String generateRandomPhoneNumber() {
+        return withFaker(faker -> faker.phoneNumber().phoneNumber());
+    }
+
+    public static String generateRandomCity() {
+        return withFaker(faker -> faker.address().cityName());
+    }
+
+    public static String generateRandomState() {
+        return withFaker(faker -> faker.address().state());
+    }
+
+    public static String generateRandomZipCode() {
+        return withFaker(faker -> faker.address().zipCode());
+    }
+
+    public static String generateRandomQuote() {
+        return withFaker(faker -> faker.gameOfThrones().quote());
+    }
+
+    public static String generateRandomEmailAddress() {
+
+        return withFaker(faker -> faker.internet().emailAddress());
+    }
+
+    private static <T> T withFaker(Function<FakerWrapper, T> function) {
+        try (FakerWrapper faker = new FakerWrapper()) {
+            return function.apply(faker);
+        }
+    }
+
+    private static class FakerWrapper extends Faker implements AutoCloseable {
+        @Override
+        public void close() {
+        }
+    }
+
+    //TODO: Check out how the created methods give results here.
+    public static void main(String[] args) {
+
+        System.out.println(generateRandomFirstName());
+        System.out.println(generateRandomLastName());
+        System.out.println(generateRandomStreetName());
+        System.out.println(generateRandomCountry());
+        System.out.println(generateRandomPhoneNumber());
+        System.out.println(generateRandomCity());
+        System.out.println(generateRandomState());
+        System.out.println(generateRandomZipCode());
+        System.out.println(generateRandomQuote());
+        System.out.println(generateRandomEmailAddress());
+        System.out.println(generateRandomString(20, false));
+        System.out.println(generateRandomString(15, true));
+        System.out.println(generateRandomNumber(10, 100));
+        System.out.println(generateRandomPassword());
+    }
 }
+

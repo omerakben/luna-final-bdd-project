@@ -24,9 +24,6 @@ public class BasePage {
 	@FindBy (linkText="Sign Out")
 	protected WebElement signOutBtn;
 	
-	@FindBy (linkText="Sign In")
-	protected WebElement signInBtn;
-	
 	@FindBy (xpath="//div[contains(@class,'header')]//a[contains(@class,'compare')]")
 	protected WebElement compareProductsLnk;
 	
@@ -83,10 +80,6 @@ public class BasePage {
 
 	public WebElement getSignOutBtn() {
 		return signOutBtn;
-	}
-
-	public WebElement getSignInBtn() {
-		return signInBtn;
 	}
 
 	public WebElement getCompareProductsLnk() {

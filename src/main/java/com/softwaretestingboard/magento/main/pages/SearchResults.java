@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 public class SearchResults {
@@ -19,43 +20,45 @@ public class SearchResults {
 
     public JavascriptExecutor js;
 
-    public SearchResults(WebDriver driver){
+    public SearchResults(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath="//li[@class='item search']/strong[contains(text(), 'Search results for:')]")
+    @FindBy(xpath = "//li[@class='item search']/strong[contains(text(), 'Search results for:')]")
     private WebElement searchResultsStrongTxt;
 
-    @FindBy(xpath="//a[@class='product-item-link']")
+    @FindBy(xpath = "//a[@class='product-item-link']")
     private List<WebElement> productItemLinks;
 
-    @FindBy(xpath="(//strong[contains(@class, 'product name')])[1]/a")
+    @FindBy(xpath = "(//strong[contains(@class, 'product name')])[1]/a")
     private WebElement firstProductTxt;
-    @FindBy(xpath="(//strong[contains(@class, 'product name')])/a")
+    @FindBy(xpath = "(//strong[contains(@class, 'product name')])/a")
     private List<WebElement> productTitles;
-    @FindBy(xpath="(//label[text()='Sort By']/following-sibling::select[@id='sorter'])[1]")
+    @FindBy(xpath = "(//label[text()='Sort By']/following-sibling::select[@id='sorter'])[1]")
     private WebElement sortByDropdown;
-    @FindBy(xpath="//span[@class='price']")
+    @FindBy(xpath = "//span[@class='price']")
     private List<WebElement> productPricesSpan;
-    @FindBy(xpath="//dl/dt/following-sibling::dd")
+    @FindBy(xpath = "//dl/dt/following-sibling::dd")
     private List<WebElement> relatedItemsList;
-    @FindBy(xpath="//strong[contains(@class, 'product name')]/a")
+    @FindBy(xpath = "//strong[contains(@class, 'product name')]/a")
     private List<WebElement> productNames;
 
-    @FindBy(xpath="//div[@class='message notice']/div[contains(text(), 'Your search returned no results.')]")
+    @FindBy(xpath = "//div[@class='message notice']/div[contains(text(), 'Your search returned no results.')]")
     private WebElement warningTextBox;
 
-    public void scrollToTop(){
+    public void scrollToTop() {
         js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", sortByDropdown);
     }
-    public boolean isSearchPageVisible(){
+
+    public boolean isSearchPageVisible() {
         return driver.getCurrentUrl().contains("catalogsearch/result/?q=");
     }
-    public void verifyProductsAreRelatedToSearch(String productName){
+
+    public void verifyProductsAreRelatedToSearch(String productName) {
         js = (JavascriptExecutor) driver;
-        for(int i=0;i<productTitles.size();i++){
+        for (int i = 0; i < productTitles.size(); i++) {
             js.executeScript("window.scrollBy(0,110)", "");
             assertTrue("correct products are not displayed",
                     productTitles.get(i).getText().contains(productName));
@@ -63,30 +66,30 @@ public class SearchResults {
         }
     }
 
-    public void isRelatedItemsValid(String productName){
-        for(int i=0; i< relatedItemsList.size(); i++){
+    public void isRelatedItemsValid(String productName) {
+        for (int i = 0; i < relatedItemsList.size(); i++) {
             assertTrue("related items does not match the keyword",
                     relatedItemsList.get(i).getText().contains(productName.toLowerCase()));
         }
     }
 
-    public void sortByPrice(){
-        select  = new Select(sortByDropdown);
+    public void sortByPrice() {
+        select = new Select(sortByDropdown);
         select.selectByValue("price");
     }
 
-    public void verifyPrices(){
+    public void verifyPrices() {
         js = (JavascriptExecutor) driver;
-        for(int i=0;i<productPricesSpan.size()-1;i++){
+        for (int i = 0; i < productPricesSpan.size() - 1; i++) {
             js.executeScript("window.scrollBy(0,110)", "");
             String priceText = productPricesSpan.get(i).getText().substring(1);
-            String nextPriceText = productPricesSpan.get(i+1).getText().substring(1);
+            String nextPriceText = productPricesSpan.get(i + 1).getText().substring(1);
             assertTrue(Float.parseFloat(priceText) >= Float.parseFloat(nextPriceText));
             js.executeScript("window.scrollBy(0,310)", "");
         }
     }
 
-    public void sortByName(){
+    public void sortByName() {
         select = new Select(sortByDropdown);
         select.selectByValue("name");
     }
@@ -105,7 +108,7 @@ public class SearchResults {
         return true;
     }
 
-    public boolean isWarningTextVisible(){
+    public boolean isWarningTextVisible() {
         String warningTxt = "Your search returned no results";
         System.out.println(warningTextBox.getText());
         return warningTextBox.getText().contains(warningTxt);
