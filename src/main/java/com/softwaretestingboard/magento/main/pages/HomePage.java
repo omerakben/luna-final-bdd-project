@@ -14,7 +14,7 @@ public class HomePage {
     @FindBy(linkText = "Create an Account")
     WebElement createAccountLink;
 
-    @FindBy(xpath="//input[@id='search']")
+    @FindBy(xpath = "//input[@id='search']")
     private WebElement searchInputField;
 
     public HomePage(WebDriver driver) {
@@ -23,11 +23,10 @@ public class HomePage {
     }
 
     public void navigateToRegistrationPage() {
-
         createAccountLink.click();
     }
 
-    public void searchForAProduct(String product){
+    public void searchForAProduct(String product) {
         searchInputField.sendKeys(product + Keys.ENTER);
     }
 }

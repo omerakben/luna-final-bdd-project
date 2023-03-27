@@ -37,16 +37,16 @@ public class Hooks {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-    // Close the browser and take a screenshot if the scenario fails
-//    @After
-//    public void closeBrowser(Scenario scenario) {
-//        String scenarioName = scenario.getName();
-//        if (scenario.isFailed()) {
-//            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-//            byte[] screenshotBytes = takesScreenshot.getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(screenshotBytes, "image/png", scenarioName);
-//        }
-//        driver.quit();
-//    }
+     //Close the browser and take a screenshot if the scenario fails
+    @After
+    public void closeBrowser(Scenario scenario) {
+        String scenarioName = scenario.getName();
+        if (scenario.isFailed()) {
+            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+            byte[] screenshotBytes = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshotBytes, "image/png", scenarioName);
+        }
+        driver.quit();
+    }
 
 }

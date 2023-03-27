@@ -19,6 +19,7 @@ public class SearchProductsPositiveSteps {
     public void the_user_is_on_the_magento_luna_homepage() {
         homePage = new HomePage(driver);
     }
+
     @When("user clicks on the search bar in the top right corner and search for {string}")
     public void user_clicks_on_the_search_bar_in_the_top_right_corner_and_search_for(String string) {
         homePage.searchForAProduct("tee");
@@ -36,6 +37,7 @@ public class SearchProductsPositiveSteps {
         searchResults.isRelatedItemsValid("Tee");
         searchResults.verifyProductsAreRelatedToSearch("Tee");
     }
+
     @Then("user should be able to sort the products by price")
     public void user_should_be_able_to_sort_the_products_by_price() {
         searchResults.scrollToTop();
@@ -47,6 +49,6 @@ public class SearchProductsPositiveSteps {
     public void user_should_be_able_to_sort_the_products_by_product_name() {
         searchResults.scrollToTop();
         searchResults.sortByName();
-        assertTrue("products are not listed in descending order",searchResults.isDescendingSorted());
+        assertTrue("products are not listed in descending order", searchResults.isDescendingSorted());
     }
 }

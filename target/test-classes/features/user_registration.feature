@@ -1,4 +1,3 @@
-
 Feature: User Registration
 
   Scenario: User Registration (Positive Test Case)

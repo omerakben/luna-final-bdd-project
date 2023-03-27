@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public  class    ConfigReader {
+public class ConfigReader {
 
     private Properties prop;
 
@@ -34,11 +34,13 @@ public  class    ConfigReader {
 
         return prop.getProperty("url");
     }
-    public void setProperty(String keyName, String value){
+
+    public void setProperty(String keyName, String value) {
         prop = new Properties();
         this.prop.setProperty(keyName, value);
     }
-    public  String getProperty(String keyName) {
+
+    public String getProperty(String keyName) {
 
         return prop.getProperty(keyName);
     }

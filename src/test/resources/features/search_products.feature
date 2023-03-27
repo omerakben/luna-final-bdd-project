@@ -1,4 +1,5 @@
 Feature: Search product
+
   Background:
     Given the user is on the Magento Luna homepage
 
@@ -10,6 +11,6 @@ Feature: Search product
     And user should be able to sort the products by product name
 
   Scenario: Search for a product(Negative Case)
-    Given user clicks on the search bar in the top right corner and searchs for "fishing rod"
+    Given user clicks on the search bar in the top right corner and searches for "fishing rod"
     Then user should be navigated to search results page for irrelevant item
     And user should be able to see warning text

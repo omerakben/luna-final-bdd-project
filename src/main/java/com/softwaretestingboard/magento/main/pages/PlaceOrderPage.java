@@ -1,15 +1,13 @@
 package com.softwaretestingboard.magento.main.pages;
 
-
-
 import com.softwaretestingboard.magento.main.utils.ConfigReader;
 import com.softwaretestingboard.magento.main.utils.ElementUtils;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.List;
 
 import static com.softwaretestingboard.magento.main.utils.CommonUtils.*;
@@ -23,73 +21,70 @@ public class PlaceOrderPage {
     ElementUtils elementUtils;
 
 
-@FindBy(xpath = "//span[contains(.,'Women')]")
-public WebElement womenBtn;
-@FindBy(xpath = "(//div[@class='product-item-info'])[1]")
-public WebElement product;
-@FindBy (xpath = "//div[@id='option-label-color-93-item-50']")
-public WebElement colorOfProduct;
-@FindBy (xpath = "//input[@id='qty']")
-public WebElement quanityOption;
-@FindBy (xpath = "//div[@id='option-label-size-143-item-166']")
-public WebElement sizeOfProduct;
-@FindBy (xpath = "//button[@id='product-addtocart-button']")
-public  WebElement addToCartBtn;
-@FindBy (xpath = "//a[@class='action showcart']")
-public WebElement cartBtn;
-@FindBy (xpath = "//span[@role='tab']")
-public WebElement seeDetailsBtn;
-@FindBy (xpath = "//span[@data-bind='text: option.value'][normalize-space()='XS']")
-public WebElement xsSizeDetail;
-@FindBy (xpath = "//span[@data-bind='text: option.value'][normalize-space()='Blue']")
-public WebElement blueSizeDetail;
-@FindBy (xpath = "//button[@id='top-cart-btn-checkout']")
-public WebElement proceedToCheckOutBtn;
-@FindBy (xpath = "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")
-public WebElement messageSuccess;
-@FindBy (xpath = "//a[normalize-space()='Radiant Tee']")
-public WebElement nameOfProductInCart;
-@FindBy (xpath = "//div[@class='control _with-tooltip']//input[@id='customer-email']")
-public WebElement emailInput;
-@FindBy (name = "firstname")
-public WebElement firstNameInput;
-@FindBy (name = "lastname")
-public WebElement lastNameInput;
-@FindBy(name = "street[0]")
-public WebElement streetAddressInput;
-@FindBy (name ="city")
-public WebElement cityNameInput;
-@FindBy (name = "region_id")
-public WebElement stateSelection;
-@FindBy(name = "postcode")
-public WebElement zipInput;
-@FindBy (name = "country_id")
-public WebElement countrySelection;
-@FindBy(name = "telephone")
-public WebElement phoneNumberInput;
-@FindBy (xpath = "(//td[@class='col col-price'])/span")
-public List<WebElement> radioBtnByPrice;
-@FindBy(xpath = "//span[normalize-space()='Next']")
-public  WebElement nextBtn;
-@FindBy(xpath  ="//div[@class='ship-to']//div[@class='shipping-information-content']")
-public WebElement shippingInfo;
-@FindBy (xpath = "//div[@class='primary']/button[@type='submit']/span[.='Place Order']")
-public WebElement placeOrderBtn;
-@FindBy (xpath = "//span[.='Thank you for your purchase!']")
-public  WebElement thankYouMessage;
-@FindBy (xpath = "//div[@class='checkout-success']/p[contains(.,'Your order # is:')]")
-public WebElement orderNumberMessage;
-@FindBy (xpath = "//span[@data-bind='text: getEmailAddress()']")
-public WebElement emailText;
+    @FindBy(xpath = "//span[contains(.,'Women')]")
+    public WebElement womenBtn;
+    @FindBy(xpath = "(//div[@class='product-item-info'])[1]")
+    public WebElement product;
+    @FindBy(xpath = "//div[@id='option-label-color-93-item-50']")
+    public WebElement colorOfProduct;
+    @FindBy(xpath = "//input[@id='qty']")
+    public WebElement quanityOption;
+    @FindBy(xpath = "//div[@id='option-label-size-143-item-166']")
+    public WebElement sizeOfProduct;
+    @FindBy(xpath = "//button[@id='product-addtocart-button']")
+    public WebElement addToCartBtn;
+    @FindBy(xpath = "//a[@class='action showcart']")
+    public WebElement cartBtn;
+    @FindBy(xpath = "//span[@role='tab']")
+    public WebElement seeDetailsBtn;
+    @FindBy(xpath = "//span[@data-bind='text: option.value'][normalize-space()='XS']")
+    public WebElement xsSizeDetail;
+    @FindBy(xpath = "//span[@data-bind='text: option.value'][normalize-space()='Blue']")
+    public WebElement blueSizeDetail;
+    @FindBy(xpath = "//button[@id='top-cart-btn-checkout']")
+    public WebElement proceedToCheckOutBtn;
+    @FindBy(xpath = "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")
+    public WebElement messageSuccess;
+    @FindBy(xpath = "//a[normalize-space()='Radiant Tee']")
+    public WebElement nameOfProductInCart;
+    @FindBy(xpath = "//div[@class='control _with-tooltip']//input[@id='customer-email']")
+    public WebElement emailInput;
+    @FindBy(name = "firstname")
+    public WebElement firstNameInput;
+    @FindBy(name = "lastname")
+    public WebElement lastNameInput;
+    @FindBy(name = "street[0]")
+    public WebElement streetAddressInput;
+    @FindBy(name = "city")
+    public WebElement cityNameInput;
+    @FindBy(name = "region_id")
+    public WebElement stateSelection;
+    @FindBy(name = "postcode")
+    public WebElement zipInput;
+    @FindBy(name = "country_id")
+    public WebElement countrySelection;
+    @FindBy(name = "telephone")
+    public WebElement phoneNumberInput;
+    @FindBy(xpath = "(//td[@class='col col-price'])/span")
+    public List<WebElement> radioBtnByPrice;
+    @FindBy(xpath = "//span[normalize-space()='Next']")
+    public WebElement nextBtn;
+    @FindBy(xpath = "//div[@class='ship-to']//div[@class='shipping-information-content']")
+    public WebElement shippingInfo;
+    @FindBy(xpath = "//div[@class='primary']/button[@type='submit']/span[.='Place Order']")
+    public WebElement placeOrderBtn;
+    @FindBy(xpath = "//span[.='Thank you for your purchase!']")
+    public WebElement thankYouMessage;
+    @FindBy(xpath = "//div[@class='checkout-success']/p[contains(.,'Your order # is:')]")
+    public WebElement orderNumberMessage;
+    @FindBy(xpath = "//span[@data-bind='text: getEmailAddress()']")
+    public WebElement emailText;
 
 
     public PlaceOrderPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-
-
 
     public void navigateToWomenSSections() {
         womenBtn.click();
@@ -114,7 +109,7 @@ public WebElement emailText;
         //elementUtils.clickOnElement(cartBtn,2);
         cartBtn.click();
         seeDetailsBtn.click();
-        assertEquals(xsSizeDetail.getText(),"XS".trim());
+        assertEquals(xsSizeDetail.getText(), "XS".trim());
         assertEquals(blueSizeDetail.getText(), "Blue".trim());
         assertTrue(messageSuccess.getText().trim().contains(nameOfProductInCart.getText().trim()));
 
@@ -122,33 +117,33 @@ public WebElement emailText;
     }
 
     public void clickOnTheProceedToCheckoutButtonToNavigateToTheCheckoutPage() {
-        proceedToCheckOutBtn.click() ;
+        proceedToCheckOutBtn.click();
 
     }
 
     public void verify_that_landed_on_check_out_page() {
-       assertEquals("Landed on wrong page", driver.getTitle(), "Checkout".trim());
+        assertEquals("Landed on wrong page", driver.getTitle(), "Checkout".trim());
 
     }
 
 
-    public void fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn () {
+    public void fillOutShippingInfoThatSProvidedOnThisPageAndThenClickNextBtn() {
         configReader = new ConfigReader();
-        String randomEmail = randomEmail();
+        String randomEmail = generateRandomEmailAddress();
         configReader.setProperty("email", randomEmail);
 
         emailInput.sendKeys(randomEmail);
 
-       firstNameInput.sendKeys(randomFirstName());
-       lastNameInput.sendKeys(randomLastName());
-       streetAddressInput.sendKeys(randomStreetName());
-       cityNameInput.sendKeys(randomCity());
+        firstNameInput.sendKeys(generateRandomFirstName());
+        lastNameInput.sendKeys(generateRandomLastName());
+        streetAddressInput.sendKeys(generateRandomStreetName());
+        cityNameInput.sendKeys(generateRandomCity());
         Select select = new Select(stateSelection);
-        select.selectByVisibleText(randomState());
-        zipInput.sendKeys(randomZip());
+        select.selectByVisibleText(generateRandomState());
+        zipInput.sendKeys(generateRandomZipCode());
         Select select1 = new Select(countrySelection);
         select1.selectByVisibleText("United States");
-        phoneNumberInput.sendKeys(randomPhoneNumber());
+        phoneNumberInput.sendKeys(generateRandomPhoneNumber());
 
         int randomIndex = (int) (Math.random() * radioBtnByPrice.size());
         radioBtnByPrice.get(randomIndex).click();
@@ -173,12 +168,8 @@ public WebElement emailText;
 
     }
 
-    public void verify_email_address_shows_as_registered( ) {
-        Assert.assertEquals("emails do not match", emailText.getText().trim(),configReader.getProperty("email"));
-
+    public void verify_email_address_shows_as_registered() {
+        assertEquals("emails do not match", emailText.getText().trim(), configReader.getProperty("email"));
 
     }
-
-
-
 }

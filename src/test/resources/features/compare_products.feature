@@ -1,6 +1,6 @@
 Feature: Compare products
 
-  Background: 
+  Background:
     Given the user is on the Magento homepage
 
   Scenario Outline: Compare products from the same category in comparison list as a new user
@@ -22,7 +22,7 @@ Feature: Compare products
     Then user is navigated to the compare products page
     And the compare products page contains all the added products
 
-    Examples: 
+    Examples:
       | menu button | products category | products subcategory |
       | Women       | Tops              | Jackets              |
 
@@ -42,7 +42,7 @@ Feature: Compare products
     Then user is navigated to the compare products page
     And the compare products page contains all the added products
 
-    Examples: 
+    Examples:
       | menu button | products category | products subcategory |
       | Women       | Bottoms           | Pants                |
 
@@ -66,7 +66,7 @@ Feature: Compare products
     And the compare products page contains all the added products
     And user delete all comparing items
 
-    Examples: 
+    Examples:
       | menu button | products category | products subcategory |
       | Men         | Bottoms           | Pants                |
 
@@ -88,8 +88,8 @@ Feature: Compare products
     When user clicks compare products link at the header
     Then user is navigated to the compare products page
     And the compare products page contains all the added products
-    
-    Examples: 
+
+    Examples:
       | menu button | products category | products subcategory |
       | Women       | Tops              | Jackets              |
 
@@ -112,7 +112,7 @@ Feature: Compare products
     Then user is navigated to the compare products page
     And the compare products page contains all the added products
     And user delete all comparing items
-    
-    Examples: 
+
+    Examples:
       | menu button | products category | products subcategory |
       | Women       | Tops              | Jackets              |

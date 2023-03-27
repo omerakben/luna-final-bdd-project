@@ -16,16 +16,18 @@ public class SearchProductsNegativeSteps {
 
     private SearchResults searchResults;
 
-    @Given("user clicks on the search bar in the top right corner and searchs for {string}")
-    public void user_clicks_on_the_search_bar_in_the_top_right_corner_and_searchs_for(String string) {
+    @Given("user clicks on the search bar in the top right corner and searches for {string}")
+    public void user_clicks_on_the_search_bar_in_the_top_right_corner_and_searches_for(String string) {
         homePage = new HomePage(driver);
         homePage.searchForAProduct("fishing rod");
     }
+
     @Then("user should be navigated to search results page for irrelevant item")
     public void user_should_be_navigated_to_search_results_page_for_irrelevant_item() {
         searchResults = new SearchResults(driver);
         assertTrue(searchResults.isSearchPageVisible());
     }
+
     @Then("user should be able to see warning text")
     public void user_should_be_able_to_see_warning_text() {
         assertTrue(searchResults.isWarningTextVisible());
