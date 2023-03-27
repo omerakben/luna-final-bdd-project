@@ -16,7 +16,7 @@ public class ProductsPage extends BasePage{
 	
 	private Set<HashMap<String,String>> allAddedItems = new HashSet<HashMap<String,String>>();
 	private HashMap<String,String> addedItem;
-	ElementUtils utils = new ElementUtils(driver);
+	ElementUtils elementUtils = new ElementUtils(driver);
 	
 	@FindBy (xpath="//div[contains(@class,'products-grid')]//ol[contains(@class,'product-items')]")
 	private WebElement productsTable;
@@ -61,9 +61,9 @@ public class ProductsPage extends BasePage{
 	}
 
 	public void addRandomProductToCompare() {
-		int index = ElementUtils.randomIntBeetween(1, productsItems.size())-1;
+		int index = elementUtils.randomIntBeetween(1, productsItems.size()-1);
 		addedItem = new HashMap<>();
-		utils.mouseHover(productsItems.get(index), 5);
+		elementUtils.mouseHover(productsItems.get(index), 5);
 		addedItem.put("image", productsImgs.get(index).getAttribute("src").substring(productsImgs.get(index).getAttribute("src").lastIndexOf("/")));
 		addedItem.put("name", productsNames.get(index).getText());
 		addedItem.put("price", productsPrices.get(index).getText());
