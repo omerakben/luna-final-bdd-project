@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class HomePage extends BasePage{
 
     private WebDriver driver;
 
@@ -17,7 +17,7 @@ public class HomePage {
     private WebElement searchInputField;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -27,7 +27,7 @@ public class HomePage {
     }
 
     public void searchForAProduct(String product){
-        searchInputField.sendKeys(product + Keys.ENTER);
+        searchInp.sendKeys(product + Keys.ENTER);
     }
     
 }
