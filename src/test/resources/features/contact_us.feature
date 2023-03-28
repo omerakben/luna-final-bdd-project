@@ -10,7 +10,7 @@ Feature: Contact us
     And User  submit the form
     Then User should see a successful message
 
-  Scenario Outline: User submits Contact Us form with invalid email address
+  Scenario Outline: User submits Contact Us form with invalid email address Negative Scenario
     When User fill out the form with invalid email address "<name>","<invalid_email>" ,"<comment>"
     And User submit the Contact Us form
     Then User should see an error message "<expected_error_message>"
