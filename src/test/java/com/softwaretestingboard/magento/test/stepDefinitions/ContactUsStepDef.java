@@ -25,6 +25,7 @@ public class ContactUsStepDef {
             System.out.println("User is on the Luma Home Page.");
         } else {
             System.out.println("User is not on the Luma Home Page.");
+
         }
     }
     @When("User click on the Contact Us link")
