@@ -1,6 +1,7 @@
 package com.softwaretestingboard.magento.main.pages;
 
 import dev.failsafe.internal.util.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,5 +29,15 @@ public class HomePage {
 
     public void searchForAProduct(String product) {
         searchInputField.sendKeys(product + Keys.ENTER);
+    }
+    public boolean isHomePageDisplayed() {
+        String expectedUrl = "https://magento.softwaretestingboard.com/";
+        return driver.getCurrentUrl().equals(expectedUrl);
+    }
+
+
+    // Method to click on the "Contact Us" link on the home page
+    public void clickContactUsLink() {
+        driver.findElement(By.linkText("Contact Us")).click();
     }
 }
