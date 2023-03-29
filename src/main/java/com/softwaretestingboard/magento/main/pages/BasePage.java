@@ -17,12 +17,21 @@ public class BasePage {
 
 	@FindBy (xpath="//div[contains(@class,'header')]//img")
 	protected WebElement logoImg;
-	
-	@FindBy (xpath="//li[contains(@class,'customer-welcome')]//button")
-	protected WebElement userDropdownMenu;
-	
+
+	@FindBy(xpath = "(//li[@class='authorization-link']//a[contains(text(),'Sign In')])[position()=1]")
+	protected WebElement signInBtn;
+
 	@FindBy (linkText="Sign Out")
 	protected WebElement signOutBtn;
+
+	@FindBy (xpath="//li[contains(@class,'customer-welcome')]//button")
+	protected WebElement userDropdownMenu;
+
+	@FindBy(xpath = "(//li[@class='greet welcome']/span[contains(text(),Welcome)])[1]")
+	private WebElement usersNameText;
+
+	@FindBy(xpath = "(//ul/li/a[text()='My Account'])[1]")
+	private WebElement myAccountLink;
 	
 	@FindBy (xpath="//div[contains(@class,'header')]//a[contains(@class,'compare')]")
 	protected WebElement compareProductsLnk;
@@ -78,8 +87,20 @@ public class BasePage {
 		return userDropdownMenu;
 	}
 
+	public WebElement getSignInBtn() {
+		return signInBtn;
+	}
+
 	public WebElement getSignOutBtn() {
 		return signOutBtn;
+	}
+
+	public WebElement getUsersNameText() {
+		return usersNameText;
+	}
+
+	public WebElement getMyAccountLink() {
+		return myAccountLink;
 	}
 
 	public WebElement getCompareProductsLnk() {

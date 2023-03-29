@@ -47,9 +47,11 @@ Feature: Compare products
       | Women       | Bottoms           | Pants                |
 
   Scenario Outline: Compare products from the same category in comparison list as an existing user
-    When the user clicks on the "Sign In" link
+    Given user is on the Magento homepage
+    When the user clicks on the Login in button
+    Then user is on the Login page
     And user enters "someemailfor@test.com" and "Somepassword123!" and clicks sign in button
-    Then the user should be successfully redirected to the My Account page
+    When user is on the Home page should be able to see his or her full name in the welcome message in the top right corner
     When user selects <menu button> and <products category> and <products subcategory>
     Then user is navigated to product page
     When user adds any product from the products list to compare
@@ -105,9 +107,11 @@ Feature: Compare products
     When user adds any product from the products list to compare
     Then the added product to compare message is appears
     And the compare products link at the header is appears and quantity is match with added items
-    When the user clicks on the "Sign In" link
+    Given user is on the Magento homepage
+    When the user clicks on the Login in button
+    Then user is on the Login page
     And user enters "someemailfor@test.com" and "Somepassword123!" and clicks sign in button
-    Then the user should be successfully redirected to the My Account page
+    When user is on the Home page should be able to see his or her full name in the welcome message in the top right corner
     When user clicks compare products link at the header
     Then user is navigated to the compare products page
     And the compare products page contains all the added products

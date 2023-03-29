@@ -1,6 +1,8 @@
 package com.softwaretestingboard.magento.main.pages;
 
+import com.softwaretestingboard.magento.main.utils.CommonUtils;
 import com.softwaretestingboard.magento.main.utils.ElementUtils;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +19,7 @@ public class MyWishListPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     private Set<HashMap<String, String>> allAddedItems = new HashSet<HashMap<String, String>>();
     private HashMap<String, String> addedItem;
     ElementUtils utils = new ElementUtils(driver);
@@ -38,6 +41,44 @@ public class MyWishListPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@data-bind, 'message.text')]")
     private WebElement addedToWishlistmsg;
+
+    @FindBy(xpath = "//button[@class='action tocart']")
+    private WebElement addAllToCartBtn;
+
+    @FindBy(xpath = "//button[@class='action share']")
+    private WebElement shareWishlistBtn;
+
+    @FindBy(id="email_address")
+    private WebElement emailInput;
+
+    @FindBy(id="message")
+    private WebElement messageInput;
+
+    @FindBy(xpath="//button[@title='Share Wish List']")
+    private WebElement shareWishlistByEmailBtn;
+
+    @FindBy(xpath ="//div[contains(@data-bind, 'message.text')]")
+    private WebElement sharedWishlistSuccessMsg;
+
+    @FindBy(xpath = "//div[@class='product-item-info']/a[@tabindex='-1']")
+    private WebElement productInWishlist;
+
+    @FindBy(xpath = "//div[@attribute-code='size']//div/div")
+    private List<WebElement> productSizes;
+
+    @FindBy(xpath = "//div[@attribute-code='color']//div/div")
+    private List<WebElement> productColor;
+
+    @FindBy(id="qty")
+    private WebElement productQty;
+
+    @FindBy(id="product-addtocart-button")
+    private WebElement addToCartBtn;
+
+
+    public void navigateToMyWishlist(){
+    driver.get("https://magento.softwaretestingboard.com/wishlist/index/index/");
+    }
 
     public WebElement showAddedToWishlistmsg(){
         return addedToWishlistmsg;
@@ -61,4 +102,24 @@ public class MyWishListPage extends BasePage {
         addToWishlistBtns.get(index).click();
     }
 
+    public void addAllToCart(){
+        addAllToCartBtn.click();
+    }
+
+    public void shareWishlist(){
+        shareWishlistBtn.click();
+        emailInput.sendKeys(CommonUtils.generateRandomEmailAddress());
+        messageInput.sendKeys(CommonUtils.generateRandomQuote());
+        shareWishlistByEmailBtn.click();
+        utils.waitForVisibilityOfElement(sharedWishlistSuccessMsg, 3000);
+        Assert.assertTrue(sharedWishlistSuccessMsg.isDisplayed());
+    }
+
+    public void selectProductDetails(){
+        int index = CommonUtils.generateRandomNumber(1,5);
+        productSizes.get(index).click();
+        productColor.get(1).click();
+        productQty.sendKeys(Integer.toString(index));
+        addToCartBtn.click();
+    }
 }

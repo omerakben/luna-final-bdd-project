@@ -1,4 +1,12 @@
 # luna-final-bdd-project
-Not bad folks! %67 passed. But I think we can see min %99, needs more attention and collaboration.
 
-https://reports.cucumber.io/reports/5b6b1c6f-81fd-49bb-8567-857ecf19d75f
+Needs more comments about what's your code doing for?
+
+Needs some refactoring.
+
+You can use TODO tag for putting a note for another one. 
+//TODO : 
+
+Always ask this question am I repeting myself, how can I improve my code.
+
+Thanks for all hard-work!

@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends BasePage {
 
+    @FindBy(xpath = "//span[text()='Customer Login']")
+    protected WebElement customerLoginText;
+
     @FindBy(id = "email")
     private WebElement emailInp;
 
@@ -15,6 +18,10 @@ public class SignInPage extends BasePage {
 
     @FindBy(id = "send2")
     private WebElement signInBtn;
+
+    public WebElement getCustomerLoginText() {
+        return customerLoginText;
+    }
 
     public SignInPage(WebDriver driver) {
         super(driver);
