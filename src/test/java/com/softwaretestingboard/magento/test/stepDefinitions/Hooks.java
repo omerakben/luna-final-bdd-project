@@ -12,6 +12,8 @@ public class Hooks extends Base {
     	getDriver();
     }
 
+
+    //Close the browser and take a screenshot if the scenario fails
     @After
     public void closeBrowser(Scenario scenario) {
     	getScreenshot(scenario);
